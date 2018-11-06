@@ -1,0 +1,85 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+<definitions name='Artists' 
+  targetNamespace='http://localhost/WebServicesCAServer/soap-server.php' 
+  xmlns:tns=' http://localhost/WebServicesCAServer/' 
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/'
+  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+  xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+     
+      
+<message name='getTeamRequest'> 
+  <part name='artist_id' type='xsd:string'/> 
+</message>  
+<message name='getTeamResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message> 
+
+<portType name='ResultsPortType'> 
+  <operation name='getArtistByCountry'> 
+    <input message='tns:getTeamRequest'/> 
+    <output message='tns:getTeamResponse'/> 
+  </operation> 
+    <operation name='getAllArtists'> 
+    <input message='tns:getTeamRequest'/> 
+    <output message='tns:getTeamResponse'/> 
+  </operation> 
+      <operation name='getPopularTracks'> 
+    <input message='tns:getTeamRequest'/> 
+    <output message='tns:getTeamResponse'/> 
+  </operation> 
+</portType> 
+
+
+<binding name='ResultsBinding' type='tns:ResultsPortType'> 
+  <soap:binding style='rpc' 
+    transport='http://schemas.xmlsoap.org/soap/http'
+  /> 
+  <operation name='getArtistByCountry'> 
+    <soap:operation soapAction='urn:localhost-Results#getTeamEntry'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-Results' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-Results' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation> 
+  
+ <operation name='getAllArtists'> 
+    <soap:operation soapAction='urn:localhost-Results#getTeamEntry'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-Results' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-Results' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation> 
+  
+   <operation name='getPopularTracks'> 
+    <soap:operation soapAction='urn:localhost-Results#getTeamEntry'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-Results' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-Results' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation> 
+</binding> 
+
+
+
+<service name='ResultsService'> 
+  <port name='ResultsPort' binding='ResultsBinding'> 
+    <soap:address location='http://localhost/WebServicesCAServer/soap-server.php'/> 
+  </port> 
+</service>
+
+
+</definitions>
